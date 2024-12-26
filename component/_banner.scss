@@ -1,0 +1,45 @@
+  #banner{
+    background: url("../images/banner_bg.jpg") no-repeat center;
+    background-size: cover;
+    position: relative;
+    .shapeOne{
+      position: absolute;
+      top: 304px;
+      left: 31px;
+    }
+    .shapeTwo{
+      position: absolute;
+      right: 310px;
+      bottom: 73px;
+    }
+    .overlay{
+      width: 100%;
+      height: 100%;
+      background: rgba(107, 98, 197, .9);
+      padding-top: 246px;
+      padding-bottom: 254px;
+      h1{
+        font-size: 84px;
+        font-weight: 700;
+        color: #FAFAFE;
+      }
+      p{
+        font-family: "Paprika", serif;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 40px;
+        color: #E6E5F3;
+        max-width: 715px;
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 16px;
+      }
+      button{
+        @include button;
+        &:hover{
+          background: transparent;
+          border: 1px solid #1BBF00;
+        }
+    }
+    }
+  }
