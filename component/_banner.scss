@@ -1,5 +1,7 @@
   #banner{
-    background: url(../images/bannerimg.jpg) no-repeat center;
+    background: url(./images/bannerimg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     position: relative;
     .shapeOne{
