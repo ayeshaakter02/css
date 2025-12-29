@@ -15,7 +15,9 @@ const addtocartController = async (req, res) => {
 
     const productinfo = await productModel.findById(product);
     if (!productinfo) {
-      return res.status(404).json({ success: false, message: "Product not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
     }
 
     // Check if same product already exists in cart
@@ -23,7 +25,8 @@ const addtocartController = async (req, res) => {
 
     if (existingCart) {
       existingCart.quantity += quantity;
-      existingCart.totalprice = existingCart.quantity * productinfo.discountprice;
+      existingCart.totalprice =
+        existingCart.quantity * productinfo.discountprice;
       await existingCart.save();
 
       return res.status(200).json({
@@ -57,7 +60,8 @@ const addtocartController = async (req, res) => {
 // Get all cart items
 const getAllCartListController = async (req, res) => {
   try {
-    const allcartlist = await cartModel.find({})
+    const allcartlist = await cartModel
+      .find({})
       .populate("product", "title image discountprice price");
 
     return res.status(200).json({
@@ -76,9 +80,13 @@ const updateQuantityController = async (req, res) => {
     const { quantity } = req.body;
     const { id } = req.params;
 
-    const cartItem = await cartModel.findById(id).populate("product", "discountprice");
+    const cartItem = await cartModel
+      .findById(id)
+      .populate("product", "discountprice");
     if (!cartItem) {
-      return res.status(404).json({ success: false, message: "Cart item not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Cart item not found" });
     }
 
     cartItem.quantity = quantity;

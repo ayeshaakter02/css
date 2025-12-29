@@ -15,9 +15,9 @@ const cartSchema = new mongoose.Schema(
       type: Number,
       default: 1,
     },
-       totalprice:{
-        type:Number,
-       },
+    totalprice: {
+      type: Number,
+    },
   },
   { timestamps: true }
 );

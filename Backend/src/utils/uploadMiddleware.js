@@ -22,7 +22,9 @@ function checkFileType(file, cb) {
   if (mimetype && extname) {
     return cb(null, true);
   } else {
-    cb("Error: Only image files are allowed! (jpeg, jpg, png, gif, webp, avif)");
+    cb(
+      "Error: Only image files are allowed! (jpeg, jpg, png, gif, webp, avif)"
+    );
   }
 }
 

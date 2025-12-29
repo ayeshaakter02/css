@@ -74,7 +74,9 @@ const singleProductController = async (req, res) => {
 
     const product = await productModel.findOne({ slug });
     if (!product) {
-      return res.status(404).json({ success: false, message: "Product not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
     }
 
     return res.status(200).json({ success: true, data: product });
@@ -90,7 +92,9 @@ const deleteProductController = async (req, res) => {
 
     const product = await productModel.findById(id);
     if (!product) {
-      return res.status(404).json({ success: false, message: "Product not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
     }
 
     // delete images safely

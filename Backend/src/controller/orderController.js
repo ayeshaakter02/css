@@ -13,7 +13,10 @@ const createOrderController = async (req, res) => {
     }
 
     // Calculate total price
-    const totalprice = cartlist.reduce((prev, cur) => prev + Number(cur.totalprice || 0), 0);
+    const totalprice = cartlist.reduce(
+      (prev, cur) => prev + Number(cur.totalprice || 0),
+      0
+    );
 
     // Create order
     const order = new orderModel({
@@ -49,8 +52,12 @@ const createOrderController = async (req, res) => {
 // Get all orders
 const allorderListController = async (req, res) => {
   try {
-    const orderlist = await orderModel.find({})
-      .populate({ path: "items.product", select: "title image price discountprice quantity" });
+    const orderlist = await orderModel
+      .find({})
+      .populate({
+        path: "items.product",
+        select: "title image price discountprice quantity",
+      });
 
     return res.status(200).json({
       success: true,
@@ -70,11 +77,17 @@ const singleorderControllers = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const order = await orderModel.findById(id)
-      .populate({ path: "items.product", select: "title image price discountprice quantity" });
+    const order = await orderModel
+      .findById(id)
+      .populate({
+        path: "items.product",
+        select: "title image price discountprice quantity",
+      });
 
     if (!order) {
-      return res.status(404).json({ success: false, message: "Order not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Order not found" });
     }
 
     return res.status(200).json({
